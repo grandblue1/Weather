@@ -2,12 +2,13 @@ import react from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import  Card  from './card';
-import { Audio } from 'react-loader-spinner';
+import {Dna, InfinitySpin, RotatingLines, TailSpin } from 'react-loader-spinner';
 import './App.css';
 import Search from './Search';
 import Select from 'react-select';
 import Component from './Component';
 import Error from './Error';
+import s from './index.css';
 function App(){
   const api = 'e2496cef2d93ba16a13742600609604a';
   const [fetchCity, setFetchCity] = useState('Киев');
@@ -56,7 +57,8 @@ return getWeather && !getWeather.message ? (
  ): getWeather && getWeather.message ?(
   <div className='App' margin="auto" text-align="center">
     <div >
-      <h2>City not Found,possible you may not delete spaces</h2>
+      <Error>
+    
     <Search
         value={fetchCity} 
         onFocus={(e) => {
@@ -67,12 +69,23 @@ return getWeather && !getWeather.message ? (
           e.keyCode === 13 && setLoading(!isLoading);
         }}
     />
-  </div></div>
+    </Error>
+  </div>
+  
+  </div>
   ) :
      (
-      <div className='App'>
-           <div><Audio margin='auto' text-align='center' height="80" width="80" radius="9" color="green" ariaLabel="loading" wrapperStyle wrapperClass
-    /></div>
-            </div>)
+      
+      <TailSpin
+  height="100"
+  width="100%"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="1"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
+    )
     }  
 export default App;
