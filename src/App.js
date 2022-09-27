@@ -10,7 +10,7 @@ import Component from './Component';
 import Error from './Error';
 import s from './index.css';
 function App(){
-  const api = 'e2496cef2d93ba16a13742600609604a';
+  
   const [fetchCity, setFetchCity] = useState('Киев');
   const [getWeather, setWeather] = useState();
   const [isLoading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ function App(){
 
   useEffect(() => {
     const get_weather = async () => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ fetchCity}&lang=ru&units=metric&appid=${process.env.KEY}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ fetchCity}&lang=ru&units=metric&appid=${process.env.REACT_APP_MYVAR}`)
     const data = await response.json();
     setWeather({...data});
     setLoading(false);
