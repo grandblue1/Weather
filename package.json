@@ -3,10 +3,8 @@
     "gh-pages": "^4.0.0",
     "react-loader-spinner": "^5.3.4",
     "react-select": "^5.4.0",
-    "typescript": "^4.8.3",
-    "homepage" :"https://github.com/grandblue1/grandblue1.github.io",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "typescript": "^4.8.3"
+   
     
   }
 }
