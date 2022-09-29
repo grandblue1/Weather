@@ -1,4 +1,5 @@
-#npm install
-
-#npm install react-loader-spinner 
-#npm start
+npm install
+#
+npm install react-loader-spinner 
+#
+npm start
