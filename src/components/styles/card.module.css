@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
+.card{
+    padding-top: 20px;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border: 2px;                                   
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    color:white;
+    background:  rgba(255,255,255,0.3);
+}
+
+s.temp ,s.name{
+    color: #FFF;
+}

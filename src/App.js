@@ -1,14 +1,13 @@
 import react from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import  Card  from './card';
+import  Card  from './components/card';
 import {Dna, InfinitySpin, RotatingLines, TailSpin } from 'react-loader-spinner';
 import './App.css';
-import Search from './Search';
-import Select from 'react-select';
-import Component from './Component';
-import Error from './Error';
+import Search from './components/Search';
+import Error from './components/Error';
 import s from './index.css';
+
 function App(){
   
   const [fetchCity, setFetchCity] = useState('Киев');
@@ -18,13 +17,12 @@ function App(){
 
   useEffect(() => {
     const get_weather = async () => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ fetchCity}&lang=ru&units=metric&appid=${process.env.REACT_APP_MYVAR}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${fetchCity}&lang=ru&units=metric&appid=${process.env.REACT_APP_MYVAR}`)
+   
     const data = await response.json();
     setWeather({...data});
     setLoading(false);
-   // setFetchCity("");
-    
-  }
+    }
   
   get_weather();
   
@@ -34,9 +32,10 @@ function App(){
 
 
 return getWeather && !getWeather.message ? (
-  <div className='App'>
+  <div className='App' >
       
         <div>
+          
         <h2>
         <title>Weather-app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,14 +44,22 @@ return getWeather && !getWeather.message ? (
     <Card 
     city={getWeather.name}
     country={getWeather.country}
-    description = {getWeather.weather[0].description}
     temp={getWeather.main.temp}
     feels_like={getWeather.main.feels_like}
+    description = {getWeather.weather[0].description}
     icon={getWeather.weather[0].icon}
 
     />
-    <Search value={fetchCity}     onFocus={e => {e.target.value =" "}}
-   onChange={e => setFetchCity(e.target.value)} onKeyDown={e => e.keyCode === 13 && setLoading(!isLoading)}/>
+    <Search
+        value={fetchCity} 
+        onFocus={(e) => {
+          e.target.value = ""
+        }}
+        onChange={(e) => setFetchCity(e.target.value)}
+        onKeyDown={(e) => {
+          e.keyCode === 13 && setLoading(!isLoading);
+        }}
+    />
   </ div></div>
  ): getWeather && getWeather.message ?(
   <div className='App' margin="auto" text-align="center">
@@ -62,7 +69,7 @@ return getWeather && !getWeather.message ? (
     <Search
         value={fetchCity} 
         onFocus={(e) => {
-          e.target.value = ''
+          e.target.value = ""
         }}
         onChange={(e) => setFetchCity(e.target.value)}
         onKeyDown={(e) => {
@@ -86,6 +93,6 @@ return getWeather && !getWeather.message ? (
   wrapperClass=""
   visible={true}
 />
-    )
+     )
     }  
 export default App;
